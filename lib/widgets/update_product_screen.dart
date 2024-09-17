@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import '../models/product.dart';
-import '../screens/update_product_screen.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({
-    super.key, required this.product, required this.onDelete, required this.onUpdate,
+    super.key,
+    required this.product,
+    required this.onDelete,
+    required this.onUpdate,
   });
 
   final Product product;
   final Function onDelete;
-  final Function onUpdate;  // New callback
+  final Function onUpdate; // New callback
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class ProductItem extends StatelessWidget {
             children: [
               TextButton.icon(
                 onPressed: () {
-                  onUpdate();  // Trigger the update
+                  onUpdate(); // Trigger the update
                 },
                 icon: const Icon(Icons.edit),
                 label: const Text('Edit'),
@@ -56,7 +58,8 @@ class ProductItem extends StatelessWidget {
   }
 
   Future<void> _deleteProduct(BuildContext context) async {
-    Uri uri = Uri.parse('http://164.68.107.70:6060/api/v1/DeleteProduct/${product.id}');
+    Uri uri = Uri.parse(
+        'http://164.68.107.70:6060/api/v1/DeleteProduct/${product.id}');
     Response response = await get(uri);
 
     if (response.statusCode == 200) {
@@ -68,4 +71,3 @@ class ProductItem extends StatelessWidget {
     }
   }
 }
-

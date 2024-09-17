@@ -12,7 +12,7 @@ class AddNewProductScreen extends StatefulWidget {
 
 class _AddNewProductScreenState extends State<AddNewProductScreen> {
   final TextEditingController _productNameTEController =
-  TextEditingController();
+      TextEditingController();
   final TextEditingController _unitPriceTEController = TextEditingController();
   final TextEditingController _totalPriceTEController = TextEditingController();
   final TextEditingController _imageTEController = TextEditingController();
@@ -111,12 +111,12 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
           _inProgress
               ? const Center(child: CircularProgressIndicator())
               : ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              fixedSize: const Size.fromWidth(double.maxFinite),
-            ),
-            onPressed: _onTapAddProductButton,
-            child: const Text('Add Product'),
-          )
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: const Size.fromWidth(double.maxFinite),
+                  ),
+                  onPressed: _onTapAddProductButton,
+                  child: const Text('Add Product'),
+                )
         ],
       ),
     );

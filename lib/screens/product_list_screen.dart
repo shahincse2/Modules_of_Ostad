@@ -30,44 +30,47 @@ class _ProductListScreenState extends State<ProductListScreen> {
       appBar: AppBar(
         title: const Text('Product list'),
         actions: [
-          IconButton(onPressed: () {
-            getProductList();
-          }, icon: const Icon(Icons.refresh))
+          IconButton(
+              onPressed: () {
+                getProductList();
+              },
+              icon: const Icon(Icons.refresh))
         ],
       ),
       body: _inProgress
           ? const Center(child: CircularProgressIndicator())
           : Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: ListView.separated(
-          itemCount: productList.length,
-          itemBuilder: (context, index) {
-            return ProductItem(
-              product: productList[index],
-              onDelete: () {
-                setState(() {
-                  productList.removeAt(index);
-                });
-              },
-              onUpdate: () async {
-                bool? shouldRefresh = await Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) {
-                    return UpdateProductScreen(product: productList[index]);
-                  }),
-                );
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: ListView.separated(
+                itemCount: productList.length,
+                itemBuilder: (context, index) {
+                  return ProductItem(
+                    product: productList[index],
+                    onDelete: () {
+                      setState(() {
+                        productList.removeAt(index);
+                      });
+                    },
+                    onUpdate: () async {
+                      bool? shouldRefresh = await Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return UpdateProductScreen(
+                              product: productList[index]);
+                        }),
+                      );
 
-                if (shouldRefresh == true) {
-                  getProductList(); // Refresh the list after update
-                }
-              },
-            );
-          },
-          separatorBuilder: (context, index) {
-            return const SizedBox(height: 16);
-          },
-        ),
-      ),
+                      if (shouldRefresh == true) {
+                        getProductList(); // Refresh the list after update
+                      }
+                    },
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const SizedBox(height: 16);
+                },
+              ),
+            ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           bool? shouldRefresh = await Navigator.push(
@@ -83,7 +86,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
         },
         child: const Icon(Icons.add),
       ),
-
     );
   }
 

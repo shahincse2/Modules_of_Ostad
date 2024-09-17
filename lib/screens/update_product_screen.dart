@@ -8,7 +8,6 @@ class UpdateProductScreen extends StatefulWidget {
 
   final Product product;
 
-
   @override
   State<UpdateProductScreen> createState() => _UpdateProductScreenState();
 }
@@ -22,6 +21,7 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
   late TextEditingController _quantityTEController;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _inProgress = false;
+
   @override
   void initState() {
     super.initState();
