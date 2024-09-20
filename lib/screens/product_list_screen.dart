@@ -47,21 +47,25 @@ class _ProductListScreenState extends State<ProductListScreen> {
                   return ProductItem(
                     product: productList[index],
                     onDelete: () {
-                      setState(() {
-                        productList.removeAt(index);
-                      });
+                      setState(
+                        () {
+                          productList.removeAt(index);
+                        },
+                      );
                     },
                     onUpdate: () async {
                       bool? shouldRefresh = await Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) {
-                          return UpdateProductScreen(
-                              product: productList[index]);
-                        }),
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return UpdateProductScreen(
+                                product: productList[index]);
+                          },
+                        ),
                       );
 
                       if (shouldRefresh == true) {
-                        getProductList(); // Refresh the list after update
+                        getProductList();
                       }
                     },
                   );
@@ -75,9 +79,11 @@ class _ProductListScreenState extends State<ProductListScreen> {
         onPressed: () async {
           bool? shouldRefresh = await Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) {
-              return const AddNewProductScreen();
-            }),
+            MaterialPageRoute(
+              builder: (context) {
+                return const AddNewProductScreen();
+              },
+            ),
           );
 
           if (shouldRefresh == true) {

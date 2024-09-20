@@ -64,9 +64,12 @@ class ProductItem extends StatelessWidget {
 
     if (response.statusCode == 200) {
       onDelete();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Product Successfully Deleted!')),
+      );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Failed to delete product')),
+        const SnackBar(content: Text('Failed to delete product!')),
       );
     }
   }

@@ -124,10 +124,10 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
     if (response.statusCode == 200) {
       Navigator.pop(context, true);
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Product updated successfully')));
+          const SnackBar(content: Text('Product updated successfully!')));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Failed to update product...')));
+          const SnackBar(content: Text('Failed to update product...!!')));
     }
     _inProgress = false;
     setState(() {});
