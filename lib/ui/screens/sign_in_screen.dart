@@ -17,24 +17,21 @@ class _SignInScreenState extends State<SignInScreen> {
       body: BackgroundScreen(
         child: Padding(
           padding: const EdgeInsets.all(32.0),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 100,
-                ),
-                Text(
-                  'Get Started with',
-                  // style: textTheme.displaySmall?.copyWith(
-                  //   fontWeight: FontWeight.w600,
-                  // ),
-                ),
-                TextFormField(),
-                TextFormField(),
-              ],
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 100,
+              ),
+              Text(
+                'Get Started with',
+                // style: textTheme.displaySmall?.copyWith(
+                //   fontWeight: FontWeight.w600,
+                // ),
+              ),
+              TextFormField(),
+              TextFormField(),
+            ],
           ),
         ),
       ),
