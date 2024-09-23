@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:modules_of_ostad/screens/product_list_screen.dart';
+import 'package:modules_of_ostad/ui/screens/splash_screen.dart';
 
-class CrudApp extends StatelessWidget {
-  const CrudApp({super.key});
+class TaskManagerApp extends StatelessWidget {
+  const TaskManagerApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: ProductListScreen(),
+    return  MaterialApp(
+      theme: ThemeData(
+        textTheme: TextTheme(
+          displaySmall: TextStyle(fontSize: 36, fontWeight: FontWeight.w600,),
+        )
+      ),
+      home: const SplashScreen(),
     );
   }
 }
