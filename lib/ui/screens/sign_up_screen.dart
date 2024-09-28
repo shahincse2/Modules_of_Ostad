@@ -1,19 +1,16 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:modules_of_ostad/ui/screens/forgot_password_email_screen.dart';
-import 'package:modules_of_ostad/ui/screens/forgot_password_otp_screen.dart';
-import 'package:modules_of_ostad/ui/screens/sign_up_screen.dart';
 import 'package:modules_of_ostad/ui/utils/app_colors.dart';
 import 'package:modules_of_ostad/ui/widget/background_screen.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
@@ -31,7 +28,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   height: 100,
                 ),
                 Text(
-                  'Get Started with',
+                  'Join with us',
                   style: textTheme.displaySmall?.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
@@ -39,25 +36,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(
                   height: 24,
                 ),
-                buildSignInForm(),
+                buildSignUpForm(),
                 const SizedBox(
                   height: 32,
                 ),
                 Center(
-                  child: Column(
-                    children: [
-                      TextButton(
-                        onPressed: _onTapForgotPasswordButton,
-                        child: const Text(
-                          'Forgot Password?',
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                      buildSignUpSection(),
-                    ],
-                  ),
+                  child: buildHaveAccountSection(),
                 )
               ],
             ),
@@ -67,7 +51,7 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  Widget buildSignInForm() {
+  Widget buildSignUpForm() {
     return Column(
       children: [
         TextFormField(
@@ -78,7 +62,25 @@ class _SignInScreenState extends State<SignInScreen> {
           height: 8,
         ),
         TextFormField(
-          obscureText: true,
+          decoration: const InputDecoration(hintText: 'First name'),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        TextFormField(
+          decoration: const InputDecoration(hintText: 'Last name'),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        TextFormField(
+          keyboardType: TextInputType.number,
+          decoration: const InputDecoration(hintText: 'Mobile'),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        TextFormField(
           decoration: const InputDecoration(hintText: 'Password'),
         ),
         const SizedBox(
@@ -93,19 +95,10 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   void _onTapNextButton() {
-   // TODO: Implement this route....
+    // TODO: Implement on Tap next Button
   }
 
-  void _onTapForgotPasswordButton() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const ForgotPasswordEmailScreen(),
-      ),
-    );
-  }
-
-  Widget buildSignUpSection() {
+  Widget buildHaveAccountSection() {
     return RichText(
       text: TextSpan(
         style: const TextStyle(
@@ -114,26 +107,21 @@ class _SignInScreenState extends State<SignInScreen> {
           fontWeight: FontWeight.w600,
           letterSpacing: 0.5,
         ),
-        text: "Don't have an account? ",
+        text: "Have an account? ",
         children: [
           TextSpan(
-            text: 'Sign Up',
+            text: 'Sign In',
             style: const TextStyle(
               color: AppColors.themeColor,
             ),
-            recognizer: TapGestureRecognizer()..onTap = _onTapSignUpButton,
+            recognizer: TapGestureRecognizer()..onTap = _onTapSignInButton,
           ),
         ],
       ),
     );
   }
 
-  void _onTapSignUpButton() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const SignUpScreen(),
-      ),
-    );
+  void _onTapSignInButton() {
+    Navigator.pop(context);
   }
 }

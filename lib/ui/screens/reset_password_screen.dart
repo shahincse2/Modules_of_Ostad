@@ -1,19 +1,18 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:modules_of_ostad/ui/screens/forgot_password_email_screen.dart';
 import 'package:modules_of_ostad/ui/screens/forgot_password_otp_screen.dart';
-import 'package:modules_of_ostad/ui/screens/sign_up_screen.dart';
+import 'package:modules_of_ostad/ui/screens/sign_in_screen.dart';
 import 'package:modules_of_ostad/ui/utils/app_colors.dart';
 import 'package:modules_of_ostad/ui/widget/background_screen.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class ResetPasswordScreen extends StatefulWidget {
+  const ResetPasswordScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
@@ -31,33 +30,26 @@ class _SignInScreenState extends State<SignInScreen> {
                   height: 100,
                 ),
                 Text(
-                  'Get Started with',
+                  'Set Password',
                   style: textTheme.displaySmall?.copyWith(
                     fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  'Minimum number of password should be 8 length.',
+                  style: textTheme.titleSmall?.copyWith(
+                    color: Colors.grey,
                   ),
                 ),
                 const SizedBox(
                   height: 24,
                 ),
-                buildSignInForm(),
+                _buildSetPasswordForm(),
                 const SizedBox(
                   height: 32,
                 ),
                 Center(
-                  child: Column(
-                    children: [
-                      TextButton(
-                        onPressed: _onTapForgotPasswordButton,
-                        child: const Text(
-                          'Forgot Password?',
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                      buildSignUpSection(),
-                    ],
-                  ),
+                  child: _buildHaveAccountSection(),
                 )
               ],
             ),
@@ -67,19 +59,19 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  Widget buildSignInForm() {
+  Widget _buildSetPasswordForm() {
     return Column(
       children: [
         TextFormField(
           keyboardType: TextInputType.emailAddress,
-          decoration: const InputDecoration(hintText: 'Email'),
+          decoration: const InputDecoration(hintText: 'Password'),
         ),
         const SizedBox(
           height: 8,
         ),
         TextFormField(
-          obscureText: true,
-          decoration: const InputDecoration(hintText: 'Password'),
+          keyboardType: TextInputType.emailAddress,
+          decoration: const InputDecoration(hintText: 'Confirm password'),
         ),
         const SizedBox(
           height: 32,
@@ -93,19 +85,16 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   void _onTapNextButton() {
-   // TODO: Implement this route....
-  }
-
-  void _onTapForgotPasswordButton() {
-    Navigator.push(
+    Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
-        builder: (context) => const ForgotPasswordEmailScreen(),
+        builder: (context) => const SignInScreen(),
       ),
+          (_) => false,
     );
   }
 
-  Widget buildSignUpSection() {
+  Widget _buildHaveAccountSection() {
     return RichText(
       text: TextSpan(
         style: const TextStyle(
@@ -114,26 +103,27 @@ class _SignInScreenState extends State<SignInScreen> {
           fontWeight: FontWeight.w600,
           letterSpacing: 0.5,
         ),
-        text: "Don't have an account? ",
+        text: "Have an account? ",
         children: [
           TextSpan(
-            text: 'Sign Up',
+            text: 'Sign In',
             style: const TextStyle(
               color: AppColors.themeColor,
             ),
-            recognizer: TapGestureRecognizer()..onTap = _onTapSignUpButton,
+            recognizer: TapGestureRecognizer()..onTap = _onTapSignInButton,
           ),
         ],
       ),
     );
   }
 
-  void _onTapSignUpButton() {
-    Navigator.push(
+  void _onTapSignInButton() {
+    Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
-        builder: (context) => const SignUpScreen(),
+        builder: (context) => const SignInScreen(),
       ),
+      (_) => false,
     );
   }
 }

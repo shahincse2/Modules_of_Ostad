@@ -1,19 +1,18 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:modules_of_ostad/ui/screens/forgot_password_email_screen.dart';
 import 'package:modules_of_ostad/ui/screens/forgot_password_otp_screen.dart';
-import 'package:modules_of_ostad/ui/screens/sign_up_screen.dart';
 import 'package:modules_of_ostad/ui/utils/app_colors.dart';
 import 'package:modules_of_ostad/ui/widget/background_screen.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class ForgotPasswordEmailScreen extends StatefulWidget {
+  const ForgotPasswordEmailScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<ForgotPasswordEmailScreen> createState() =>
+      _ForgotPasswordEmailScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _ForgotPasswordEmailScreenState extends State<ForgotPasswordEmailScreen> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
@@ -31,33 +30,26 @@ class _SignInScreenState extends State<SignInScreen> {
                   height: 100,
                 ),
                 Text(
-                  'Get Started with',
+                  'Your Email Address',
                   style: textTheme.displaySmall?.copyWith(
                     fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  'A 6 digits verification otp will be sent to your email address.',
+                  style: textTheme.titleSmall?.copyWith(
+                    color: Colors.grey,
                   ),
                 ),
                 const SizedBox(
                   height: 24,
                 ),
-                buildSignInForm(),
+                _buildVerifyEmailForm(),
                 const SizedBox(
                   height: 32,
                 ),
                 Center(
-                  child: Column(
-                    children: [
-                      TextButton(
-                        onPressed: _onTapForgotPasswordButton,
-                        child: const Text(
-                          'Forgot Password?',
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                      buildSignUpSection(),
-                    ],
-                  ),
+                  child: _buildHaveAccountSection(),
                 )
               ],
             ),
@@ -67,19 +59,12 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  Widget buildSignInForm() {
+  Widget _buildVerifyEmailForm() {
     return Column(
       children: [
         TextFormField(
           keyboardType: TextInputType.emailAddress,
           decoration: const InputDecoration(hintText: 'Email'),
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        TextFormField(
-          obscureText: true,
-          decoration: const InputDecoration(hintText: 'Password'),
         ),
         const SizedBox(
           height: 32,
@@ -93,19 +78,15 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   void _onTapNextButton() {
-   // TODO: Implement this route....
-  }
-
-  void _onTapForgotPasswordButton() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const ForgotPasswordEmailScreen(),
+        builder: (context) => const ForgotPasswordOtpScreen(),
       ),
     );
   }
 
-  Widget buildSignUpSection() {
+  Widget _buildHaveAccountSection() {
     return RichText(
       text: TextSpan(
         style: const TextStyle(
@@ -114,26 +95,21 @@ class _SignInScreenState extends State<SignInScreen> {
           fontWeight: FontWeight.w600,
           letterSpacing: 0.5,
         ),
-        text: "Don't have an account? ",
+        text: "Have an account? ",
         children: [
           TextSpan(
-            text: 'Sign Up',
+            text: 'Sign In',
             style: const TextStyle(
               color: AppColors.themeColor,
             ),
-            recognizer: TapGestureRecognizer()..onTap = _onTapSignUpButton,
+            recognizer: TapGestureRecognizer()..onTap = _onTapSignInButton,
           ),
         ],
       ),
     );
   }
 
-  void _onTapSignUpButton() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const SignUpScreen(),
-      ),
-    );
+  void _onTapSignInButton() {
+    Navigator.pop(context);
   }
 }
