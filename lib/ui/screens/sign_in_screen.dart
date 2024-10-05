@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:modules_of_ostad/ui/screens/forgot_password_email_screen.dart';
-import 'package:modules_of_ostad/ui/screens/forgot_password_otp_screen.dart';
+import 'package:modules_of_ostad/ui/screens/main_bottom_nav_bar_screen.dart';
 import 'package:modules_of_ostad/ui/screens/sign_up_screen.dart';
 import 'package:modules_of_ostad/ui/utils/app_colors.dart';
 import 'package:modules_of_ostad/ui/widget/background_screen.dart';
@@ -93,7 +93,13 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   void _onTapNextButton() {
-   // TODO: Implement this route....
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const MainBottomNavBarScreen(),
+      ),
+      (predicate) => false,
+    );
   }
 
   void _onTapForgotPasswordButton() {
