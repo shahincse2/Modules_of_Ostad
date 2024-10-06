@@ -78,7 +78,7 @@ class _TaskCardState extends State<TaskCard> {
           ),
           actions: [
             TextButton(
-              onPressed: () {f
+              onPressed: () {
                 Navigator.pop(context);
               },
               child: const Text('Cancel'),
