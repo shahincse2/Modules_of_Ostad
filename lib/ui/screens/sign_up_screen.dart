@@ -5,7 +5,6 @@ import 'package:modules_of_ostad/data/utils/urls.dart';
 import 'package:modules_of_ostad/ui/utils/app_colors.dart';
 import 'package:modules_of_ostad/ui/widget/background_screen.dart';
 import 'package:modules_of_ostad/ui/widget/snack_bar_message.dart';
-
 import '../../data/services/network_response.dart';
 import '../widget/centered_circular_progress_indicator.dart';
 
