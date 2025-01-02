@@ -5,7 +5,7 @@ import 'package:modules_of_ostad/app/assets_path.dart';
 import 'package:modules_of_ostad/features/common/ui/controllers/main_bottom_nav_controller.dart';
 import '../widget/app_bar_icon_button.dart';
 import '../../../common/ui/widgets/category_item_widget.dart';
-import '../widget/home_carouse_slider.dart';
+import '../widget/home_carousel_slider.dart';
 import '../widget/home_section_header.dart';
 import '../../../common/ui/widgets/product_item_widget.dart';
 import '../widget/product_search_bar.dart';
