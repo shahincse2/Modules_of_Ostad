@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:modules_of_ostad/features/cart/ui/screens/cart_list_screen.dart';
 import 'package:modules_of_ostad/features/category/ui/screen/category_list_screen.dart';
 import 'package:modules_of_ostad/features/common/ui/controllers/main_bottom_nav_controller.dart';
 import 'package:modules_of_ostad/features/home/ui/screens/home_screen.dart';
+import 'package:modules_of_ostad/features/wishlist/ui/screens/wishlist_screen.dart';
 
 class MainBottomNavScreen extends StatefulWidget {
   const MainBottomNavScreen({super.key});
@@ -18,8 +20,8 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   final List<Widget> _screens = const[
     HomeScreen(),
     CategoryListScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    CartListScreen(),
+    WishlistScreen(),
   ];
 
   @override

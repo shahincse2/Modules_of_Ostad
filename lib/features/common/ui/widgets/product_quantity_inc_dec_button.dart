@@ -51,7 +51,7 @@ class _ProductQuantityIncDecButtonState
   }
 
   void _buildProductDecButton() {
-    if (_productQuantity > 1) {
+    if (_productQuantity > 0) {
       _productQuantity--;
       widget.onChange(_productQuantity);
       setState(() {});

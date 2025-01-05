@@ -4,12 +4,15 @@ import 'package:modules_of_ostad/app/app_theme_data.dart';
 import 'package:modules_of_ostad/app/controller_binder.dart';
 import 'package:modules_of_ostad/features/auth/ui/screens/splash_screen.dart';
 import 'package:modules_of_ostad/features/category/ui/screen/category_list_screen.dart';
+import 'package:modules_of_ostad/features/common/ui/screens/create_reviews_screen.dart';
 import 'package:modules_of_ostad/features/common/ui/screens/main_bottom_nav_screen.dart';
+import 'package:modules_of_ostad/features/common/ui/widget/card_reviews_item_widget.dart';
 import 'package:modules_of_ostad/features/product/ui/screens/product_details_screen.dart';
 import 'package:modules_of_ostad/features/product/ui/screens/product_list_screen.dart';
 import '../features/auth/ui/screens/complete_profile.dart';
 import '../features/auth/ui/screens/email_verification_screen.dart';
 import '../features/auth/ui/screens/otp_verification_screen.dart';
+import '../features/common/ui/screens/reviews_list_screen.dart';
 
 class CraftyBay extends StatelessWidget {
   const CraftyBay({super.key});
@@ -44,6 +47,12 @@ class CraftyBay extends StatelessWidget {
         } else if (settings.name == ProductDetailsScreen.name) {
           int productId = settings.arguments as int;
           widget = ProductDetailsScreen(productId: productId);
+        } else if (settings.name == ReviewsListScreen.name) {
+          widget = ReviewsListScreen();
+        } else if (settings.name == CardReviewsItemWidget.name) {
+          widget = CardReviewsItemWidget();
+        } else if (settings.name == CreateReviewsScreen.name) {
+          widget = CreateReviewsScreen();
         }
 
         return MaterialPageRoute(builder: (ctx) {

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:modules_of_ostad/app/app_colors.dart';
+import 'package:modules_of_ostad/features/common/ui/screens/reviews_list_screen.dart';
 import 'package:modules_of_ostad/features/product/ui/widgets/color_picker_widget.dart';
 import 'package:modules_of_ostad/features/product/ui/widgets/product_image_carousel_slider.dart';
-import 'package:modules_of_ostad/features/product/ui/widgets/product_quantity_inc_dec_button.dart';
+import 'package:modules_of_ostad/features/common/ui/widgets/product_quantity_inc_dec_button.dart';
 import 'package:modules_of_ostad/features/product/ui/widgets/size_picker_widget.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -65,7 +66,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     ],
                                   ),
                                   TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, ReviewsListScreen.name);
+                                    },
                                     child: const Text('Reviews'),
                                   ),
                                   Container(
